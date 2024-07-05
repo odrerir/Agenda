@@ -8,24 +8,18 @@
 
 <ion-content>
   <ion-list>
-  <ion-item>
-    <ion-input [(ngModel)]="nome" label="Nome" placeholder="Insira o nome"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input [(ngModel)]="telefone" type="number" label="Telefone" placeholder="Insira o telefone"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-button (click)="cadastrar()" expand="full">Cadastrar</ion-button>
-  </ion-item>
-  </ion-list>
-  <ion-list>
     <ion-header>
       Meus Contatos
     </ion-header>
     <ion-item *ngFor="let contato of contatos">
       <ion-label>{{contato.nome}}</ion-label>
-      <ion-label>{{contato.telefone}}</ion-label>
     </ion-item>
   </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="irParaCadastrar()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
 
