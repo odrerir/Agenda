@@ -1,13 +1,14 @@
 export default class Contato{
-    private _nome:string;
-    private _telefone:string;
-    private _email:string;
-    private _genero:number;
-    
+    private _nome: string;
+    private _telefone: string;
+    private _email: string;
+    private _genero: number;
     constructor(nome:string,telefone:string){
         this._nome = nome;
         this._telefone= telefone
+
     }
+
     public get nome(): string {
         return this._nome;
     }

@@ -5,24 +5,30 @@ import Contato from './entity/Contato';
   providedIn: 'root'
 })
 export class ContatoService {
-  contatos: Contato[] = [];
-  constructor() { 
-      let cl: Contato = new Contato("Carlos", "429110221");
-      let cl2: Contato = new Contato("Jotair", "429110221");
-      let cl3: Contato = new Contato("Giovani", "429110221");
-      this.contatos.push(cl);
-      this.contatos.push(cl2);
-      this.contatos.push(cl3);
-    
-  }
+  contatos:Contato[] =[];
+  constructor() {
+    let cl : Contato = new Contato("Carlos", "429110221");
+    let cl2 : Contato = new Contato("Jotair", "429110221");
+    let cl3 : Contato = new Contato("Giovani", "429110221");
+    this.contatos.push(cl);
+    this.contatos.push(cl2);
+    this.contatos.push(cl3);
+   }
 
-  obterTodos() : Contato[]{
+   obterTodos() : Contato[]{
     return this.contatos;
-  }
-  obterPorIndice(indice : number) : Contato{
+   }
+   obterPorIndice(indice:number): Contato{
     return this.contatos[indice];
-  }
-  cadastrar(contato : Contato){
+   }
+   cadastrar(contato:Contato){
     this.contatos.push(contato);
-  }
+   }
+   editar(indice:number, contato:Contato){
+    this.contatos[indice] = contato;
+   }
+
+   excluir(indice:number){
+    this.contatos.splice(indice,1);
+   }
 }

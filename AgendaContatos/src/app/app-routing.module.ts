@@ -10,11 +10,15 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'cadastrar',
     loadChildren: () => import('./view/cadastrar/cadastrar.module').then( m => m.CadastrarPageModule)
   },
-
+  {
+    path: 'editar/:indice',
+    loadChildren: () => import('./view/editar/editar.module').then( m => m.EditarPageModule)
+  },
 ];
 
 @NgModule({

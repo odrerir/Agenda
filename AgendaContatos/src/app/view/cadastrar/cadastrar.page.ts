@@ -10,59 +10,35 @@ import Contato from 'src/app/model/services/entity/Contato';
   styleUrls: ['./cadastrar.page.scss'],
 })
 export class CadastrarPage implements OnInit {
-  private _nome: string;
-  private _telefone: string;
-  private _email: string;
-  private _genero: number;
-
-  constructor(private alertController: AlertController, private contatoService : ContatoService, private router : Router) { }
+  nome:string;
+  telefone:string;
+  email:string;
+  genero:number;
+  constructor(private alertController: AlertController,private contatoService: ContatoService, private router: Router) {
+   }
 
   ngOnInit() {
   }
 
-  public get nome(): string {
-    return this._nome;
-  }
-  public set nome(value: string) {
-    this._nome = value;
-  }
-  public get telefone(): string {
-    return this._telefone;
-  }
-  public set telefone(value: string) {
-    this._telefone = value;
-  }
-  public get email(): string {
-    return this._email;
-  }
-  public set email(value: string) {
-    this._email = value;
-  }
-  public get genero(): number {
-    return this._genero;
-  }
-  public set genero(value: number) {
-    this._genero = value;
-  }
-
-  cadastrar() {
-    if (this.nome && this.telefone) {
-      let c: Contato = new Contato(this.nome, this.telefone);
-      if (this.email) {
+  cadastrar(){
+    if(this.nome && this.telefone){
+      let c:Contato = new Contato(this.nome,this.telefone);
+      if(this.email){
         c.email = this.email;
       }
-      if (c.genero) {
+      if(this.genero){
         c.genero = this.genero;
-      } else {
-        c.genero = 0;
+      }else{
+        c.genero = 0
       }
+//      this.contatos.push(c);
       this.contatoService.cadastrar(c);
-      this.router.navigate(['/home']);
-    } else {
-      this.presentAlert('Erro', 'Todos os campos são Obrigatórios.');
+      this.router.navigate(['/home'])
+    }else{
+      this.presentAlert('Erro','Todos os campos são Obrigatórios.');
     }
-    this.nome = "";
-    this.telefone = "";
+    this.nome="";
+    this.telefone="";
   }
 
   async presentAlert(subHeader: string, message: string) {
@@ -72,6 +48,6 @@ export class CadastrarPage implements OnInit {
       message: message,
       buttons: ['OK'],
     });
-    await alert.present();
-  }
+}
+
 }
