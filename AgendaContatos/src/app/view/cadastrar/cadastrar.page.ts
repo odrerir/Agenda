@@ -14,8 +14,10 @@ export class CadastrarPage implements OnInit {
   telefone:string;
   email:string;
   genero:number;
-  constructor(private alertController: AlertController,private contatoService: ContatoService, private router: Router) {
-   }
+  constructor(private alertController: AlertController,
+    private contatoService: ContatoService, 
+    private router: Router, 
+    private firebaseService: firebase) {}
 
   ngOnInit() {
   }
@@ -32,7 +34,7 @@ export class CadastrarPage implements OnInit {
         c.genero = 0
       }
 //      this.contatos.push(c);
-      this.contatoService.cadastrar(c);
+      this.firebaseService.cadastrar(c);
       this.router.navigate(['/home'])
     }else{
       this.presentAlert('Erro','Todos os campos são Obrigatórios.');
